@@ -15,9 +15,9 @@ def GetUserDetails(userhandles):
         userNames = userhandles[start : start + usernameLimitPerHit]
         newApi = apiUrl.replace('[]', ",".join(userNames))
         response = requests.get(newApi, headers=headers).json()
-        df = df.append(pandas.DataFrame.from_dict(response['data']))
-        if()
-        errors = errors.append(pandas.DataFrame.from_dict(response['errors']))
+        df = df.append(pandas.DataFrame.from_dict(response['data']), ignore_index=True)
+        if("errors" in response):
+            errors = errors.append(pandas.DataFrame.from_dict(response['errors']), ignore_index=True)
     with pandas.ExcelWriter('userData.xlsx', mode='w') as writer:  
         df.to_excel(writer, sheet_name='user_data')
         errors.to_excel(writer, sheet_name='errors')
