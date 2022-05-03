@@ -70,8 +70,8 @@ def populate_tweets(file_name_list,csv_writer,dir_path,event_start,event_end):
                 # write logic
                 split_date = write_tweet_details["date"].split("T")[0]
                 formatted_date = datetime.datetime.strptime(split_date,'%Y-%m-%d')
-                start_date = datetime.datetime.strptime(event_start["farmers_protest"],'%d-%m-%Y')
-                end_date = datetime.datetime.strptime(event_end["farmers_protest"],'%d-%m-%Y')
+                start_date = datetime.datetime.strptime(event_start["up_punjab_elections"],'%d-%m-%Y')
+                end_date = datetime.datetime.strptime(event_end["up_punjab_elections"],'%d-%m-%Y')
                 if formatted_date >= start_date and formatted_date <= end_date:
                     csv_writer[filename.split(".")[0]].writerow(write_tweet_details.values())
                 
